@@ -3,6 +3,7 @@ using namespace std;
 int main()
 {
     char nombre[50];
+    char descripcion[300];
     int opc;
     int nss;
     int tratamiento;
@@ -28,8 +29,9 @@ int main()
             while (otracita == 1)
             {
 
-                cout << "Ingrese nombre del paciente:" << endl; // tengo pendiente agregarle el getline
-                cin >> nombre ; 
+                cout << "Ingrese nombre del paciente:" << endl;
+                cin.ignore();
+                cin.getline(nombre, 50, '\n');
 
                 cout << "Ingrese numero del servicio social del paciente:" << endl;
                 cin >> nss;
@@ -40,6 +42,10 @@ int main()
                 cout << "3. brackets" << endl;
                 cout << " 4. coronillas" << endl;
                 cin >> tratamiento;
+
+                cout << "Ingrese descripción del tratamiento:" << endl; 
+                cin.ignore();
+                cin.getline(tratamiento, 300, '\n');
 
                 cout << "Que dia desea agendar la cita? (Dia y mes)" << endl;
                 cin >> dia >> mes;
