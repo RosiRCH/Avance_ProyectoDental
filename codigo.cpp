@@ -45,7 +45,7 @@ int main()
 
                 cout << "Ingrese descripción del tratamiento:" << endl; 
                 cin.ignore();
-                cin.getline(tratamiento, 300, '\n');
+                cin.getline(descripcion, 300, '\n');
 
                 cout << "Que dia desea agendar la cita? (Dia y mes)" << endl;
                 cin >> dia >> mes;
