@@ -1,0 +1,366 @@
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+#include <string>
+#include <fstream>
+#include <stdlib.h>
+#include <vector>
+#include <Windows.h>
+#include <locale.h>
+
+using namespace std;
+
+void agendar();
+void modificar();
+void listas();
+void limpiarpantalla();
+void eliminar();
+void archivos();
+string* nombre, * descripcion, * tratamiento;
+int i, j, n, * cantidad, * total, * costunitario, * subtotal, * iva, * h, * m;
+float* fecha;
+
+int main()
+{
+    setlocale(LC_ALL, "spansih");
+    SetConsoleCP(1252);
+    SetConsoleOutputCP(1252);
+    int opc;
+
+    cout << "Bienvenido, favor de indicar la opcion que desea: " << endl;
+    cout << "1. Agendar cita " << endl;
+    cout << "2. Modificar cita " << endl;
+    cout << "3. Eliminar cita " << endl;
+    cout << "4. Lista de citas vigentes " << endl;
+    cout << "5. Limpiar pantalla " << endl;
+    cout << "6. Salir " << endl;
+    cin >> opc;
+
+    switch (opc)
+    {
+    case 1:
+        agendar();
+        return main();
+        break;
+
+    case 2:
+        modificar();
+        return main();
+        break;
+
+    case 3:
+        eliminar();
+        return main();
+        break;
+
+    case 4:
+        listas();
+        return main();
+        break;
+
+    case 5:
+        limpiarpantalla();
+        return main();
+        break;
+
+    case 6:
+        archivos();
+        exit(EXIT_SUCCESS);
+        break;
+
+    default:
+        cout << "opcion invalida" << endl;
+    }
+}
+void agendar()
+{
+    cout << "Escriba la cantidad de citas que desea dar de alta" << endl;
+    cin >> j;
+    nombre = new string[j];
+    tratamiento = new string[j];
+    descripcion = new string[j];
+    fecha = new float[j];
+    total = new int[j];
+    cantidad = new int[j];
+    costunitario = new int[j];
+    subtotal = new int[j];
+    iva = new int[j];
+    h = new int[j];
+    m = new int[j];
+    for (int i = 0; i < j; i++)
+    {
+        cout << "Numero de cita: " << i + 1 << endl;
+        cout << "Ingrese nombre del paciente:" << endl;
+        while (getchar() != '\n');
+        //cin.ignore();
+        getline(cin, nombre[i]);
+
+        cout << "Especifique el tratamiento a recibir" << endl;
+        cout << "1. limpieza" << endl;
+        cout << "2. endodoncia" << endl;
+        cout << "3. brackets" << endl;
+        cout << "4. coronillas" << endl;
+        //cin.ignore();
+        getline(cin, tratamiento[i]);
+
+        cout << "Ingrese costo unitario" << endl;
+        cin >> costunitario[i];
+
+        cout << "ingrese la cantidad del tratamiento a recibir" << endl;
+        cin >> cantidad[i];
+
+        cout << "Ingrese descripcion del tratamiento:" << endl;
+        while (getchar() != '\n');
+        //cin.ignore();
+        getline(cin, descripcion[i]);
+
+        cout << "Que dia desea agendar la cita? (Ej: 11.25, mes.dia)" << endl;
+        cin >> fecha[i];
+
+        cout << "Ingrese la hora de la cita (formato 24hr):" << endl;
+        cin >> h[i];
+
+        cout << "Ingrese los minutos:" << endl;
+        cin >> m[i];
+
+        if (h[i] >= 0 && h[i] < 24 && m[i] >= 0 && m[i] < 60)
+        {
+            cout << "hora de la cita:" << endl;
+            cout << h[i] << ":" << m[i] << endl;
+        }
+        else
+        {
+            cout << "Error: ingrese una hora valida" << endl;
+        }
+    }
+}
+
+void modificar() 
+{
+
+    int md;
+
+    cout << "Ingrese el numero de cita asignado: ";
+    cin >> n;
+    n = n - 1;
+    cout << "ingrese que desea modificar" << endl;
+    cout << "1.-nombre,2.-tratamiento,3.- Costo Unitario, 4.-cantidad,5.-descripcion, 6.- fecha y hora, 7.- toda la cita" << endl;
+    cin >> md;
+
+    for (i = n; i <= n; i++)
+    {
+        switch (md)
+        {
+        case 1:
+            cout << "Numero de cita" << i + 1 << endl;
+            cout << "Ingrese el nombre:" << endl;
+            cin.ignore();
+            getline(cin, nombre[i]);
+
+            break;
+        case 2:
+
+            cout << "Numero de cita" << i + 1 << endl;
+            cout << "Ingrese el tratamiento:" << endl;
+            //cin.ignore();
+            cin >> tratamiento[i];
+
+            break;
+        case 3:
+
+            cout << "Numero de cita" << i + 1 << endl;
+            cout << "Ingrese costo unitario" << endl;
+            cin >> costunitario[i];
+
+        case 4:
+            cout << "Numero de cita" << i + 1 << endl;
+            cout << "Ingrese la cantidad del tratamiento;" << endl;
+            cin >> cantidad[i];
+            break;
+        case 5:
+            cout << "Numero de cita" << i + 1 << endl;
+            cout << "Ingresar nueva descripcion" << endl;
+            getline(cin, descripcion[i]);
+            break;
+        case 6:
+
+            cout << "Numero de cita" << i + 1 << endl;
+            cout << "Ingresar nueva fecha (Ej: 11.25, mes.dia)" << endl;
+            cin >> fecha[i];
+
+            cout << "Ingrese la hora de la cita (formato 24hr):" << endl;
+            cin >> h[i];
+
+            cout << "Ingrese los minutos:" << endl;
+            cin >> m[i];
+
+            if (h[i] >= 0 && h[i] < 24 && m[i] >= 0 && m[i] < 60)
+            {
+                cout << "hora de la cita:" << endl;
+                cout << h[i] << ":" << m[i] << endl;
+            }
+            else
+            {
+                cout << "Error: ingrese una hora valida" << endl;
+            }
+            break;
+        case 7:
+
+            cout << "Ingrese nombre del paciente:" << endl;
+            getline(cin, nombre[i]);
+
+            cout << "Especifique el tratamiento a recibir" << endl;
+            cout << "1. limpieza" << endl;
+            cout << "2. endodoncia" << endl;
+            cout << "3. brackets" << endl;
+            cout << "4. coronillas" << endl;
+            cout << "Costo Unitario por tratamiento: 400 pesos" << endl;
+            //cin.ignore();
+            getline(cin, tratamiento[i]);
+
+            cout << "ingrese la cantidad del tratamiento a recibir" << endl;
+            cin >> cantidad[i];
+
+            cout << "Ingrese descripción del tratamiento:" << endl;
+            getline(cin, descripcion[i]);
+
+
+            cout << "Que dia desea agendar la cita? (Ej: 11.25, mes.dia)" << endl;
+            cin >> fecha[i];
+            cout << "Ingrese la hora de la cita (formato 24hr):" << endl;
+            cin >> h[i];
+
+            cout << "Ingrese los minutos:" << endl;
+            cin >> m[i];
+
+            if (h[i] >= 0 && h[i] < 24 && m[i] >= 0 && m[i] < 60)
+            {
+                cout << "hora de la cita:" << endl;
+                cout << h[i] << ":" << m[i] << endl;
+            }
+            else
+            {
+                cout << "Error: ingrese una hora valida" << endl;
+            }
+
+            break;
+            default:
+            cout << "Opcion Invalida" << endl;
+            return modificar();
+            break;
+        }
+        
+    }
+}
+void listas()
+{
+    for (int i = 0; i < j; i++)
+    {
+        cout << "Numero de cita: " << i + 1 << endl;
+        cout << "Nombre del paciente: " << endl;
+        cout << nombre[i] << endl;
+        cout << "Tratamiento a llevar: " << endl;
+        cout << tratamiento[i] << endl;
+        cout << "Descripcion del tratamiento" << endl;
+        cout << descripcion[i] << endl;
+        cout << "Fecha de la cita" << endl;
+        cout << fecha[i] << endl;
+        cout << "hora de la cita:" << endl;
+        cout << h[i] << ":" << m[i] << endl;
+    }
+
+}
+
+void limpiarpantalla()
+{
+    system("cls");
+}
+
+
+void eliminar()
+{
+    cout << "ingrese el  registro a eliminar: " << endl;
+    cin >> n;
+    n = n - 1;
+    for (int i = n; i == n; i++)
+    {
+        cout << "Eliminando registro " << n + 1 << endl;
+
+      
+        nombre[i] = " ";
+        tratamiento[i] = " ";
+        fecha[i] = 0;
+        descripcion[i] = " ";
+        costunitario[i] = 0;
+        cantidad[i] = 0;
+        h[i] = 0;
+        m[i] = 0;
+    }
+}
+
+void archivos()
+{
+    ofstream archivo;
+    string nombrearchivo;
+    int texto;
+    string texto2;
+    float texto3;
+
+    nombrearchivo = "citas_vigentes";
+
+    archivo.open(nombrearchivo.c_str(), ios::out);
+
+    if (archivo.fail())
+    {
+        cout << "ERROR NO SE PUDO CREAR EL ARCHIVO";
+        exit(1);
+    }
+
+
+
+    for (int i = 0; i < j; i++)
+    {
+        archivo << "#" << "\n";
+        texto = i + 1;
+        archivo << texto << "\n";
+        archivo << "NOMBRE" << "\n";
+        texto2 = nombre[i];
+        archivo << texto2 << "\n";
+        archivo << "TRATAMIENTO" << "\n";
+        texto2 = tratamiento[i];
+        archivo << texto2 << "\n";
+        archivo << "DESCRIPCION" << "\n";
+        texto2 = descripcion[i];
+        archivo << texto2 << "\n";
+        archivo << "FECHA" << "\n";
+        texto3 = fecha[i];
+        archivo << texto3 << "\n";
+        archivo << "HORA" << "\n";
+        texto = h[i];
+        archivo << texto;
+        texto = m[i];
+        archivo << ":" << texto << "\n";
+        subtotal[i] = costunitario[i] * cantidad[i];
+        iva[i] = subtotal[i] * .16;
+        total[i] = subtotal[i] + iva[i];
+        archivo << "COSTO" << "\n";
+        texto = costunitario[i];
+        archivo << texto << "\n";
+        archivo << "CANTIDAD" << "\n";
+        texto = cantidad[i];
+        archivo << texto << "\n";
+        archivo << "SUBTOTAL" << "\n";
+        texto = subtotal[i];
+        archivo << texto << "\n";
+        archivo << "IVA" << "\n";
+        texto = iva[i];
+        archivo << texto << "\n";
+        archivo << "TOTAL" << "\n";
+        texto = total[i];
+        archivo << texto << "\n";
+        archivo << "__________________" << "\n";
+    }
+
+
+    archivo.close();
+}
