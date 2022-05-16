@@ -135,7 +135,7 @@ void agendar()
     }
 }
 
-void modificar() 
+void modificar()
 {
 
     int md;
@@ -218,6 +218,9 @@ void modificar()
             //cin.ignore();
             getline(cin, tratamiento[i]);
 
+            cout << "Ingrese costo unitario" << endl;
+            cin >> costunitario[i];
+
             cout << "ingrese la cantidad del tratamiento a recibir" << endl;
             cin >> cantidad[i];
 
@@ -244,12 +247,12 @@ void modificar()
             }
 
             break;
-            default:
+        default:
             cout << "Opcion Invalida" << endl;
             return modificar();
             break;
         }
-        
+
     }
 }
 void listas()
@@ -263,6 +266,10 @@ void listas()
         cout << tratamiento[i] << endl;
         cout << "Descripcion del tratamiento" << endl;
         cout << descripcion[i] << endl;
+        cout << "Cantidad del tratamiento a recibir:" << endl;
+        cout << cantidad[i];
+        cout << "Costo unitario:" << endl;
+        cout << costunitario[i];
         cout << "Fecha de la cita" << endl;
         cout << fecha[i] << endl;
         cout << "hora de la cita:" << endl;
@@ -286,7 +293,7 @@ void eliminar()
     {
         cout << "Eliminando registro " << n + 1 << endl;
 
-      
+
         nombre[i] = " ";
         tratamiento[i] = " ";
         fecha[i] = 0;
