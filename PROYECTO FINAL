@@ -70,6 +70,8 @@ int main()
 
     default:
         cout << "opcion invalida" << endl;
+        return main();
+        break;
     }
 }
 void agendar()
@@ -266,10 +268,6 @@ void listas()
         cout << tratamiento[i] << endl;
         cout << "Descripcion del tratamiento" << endl;
         cout << descripcion[i] << endl;
-        cout << "Cantidad del tratamiento a recibir:" << endl;
-        cout << cantidad[i];
-        cout << "Costo unitario:" << endl;
-        cout << costunitario[i];
         cout << "Fecha de la cita" << endl;
         cout << fecha[i] << endl;
         cout << "hora de la cita:" << endl;
