@@ -268,6 +268,10 @@ void listas()
         cout << tratamiento[i] << endl;
         cout << "Descripcion del tratamiento" << endl;
         cout << descripcion[i] << endl;
+        cout << "Cantidad del tratamiento a recibir:" << endl;
+        cout << cantidad[i] << endl;
+        cout << "Costo unitario:" << endl;
+        cout << costunitario[i] << endl;
         cout << "Fecha de la cita" << endl;
         cout << fecha[i] << endl;
         cout << "hora de la cita:" << endl;
