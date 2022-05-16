@@ -27,7 +27,7 @@ int main()
     SetConsoleOutputCP(1252);
     int opc;
 
-    cout << "Bienvenido, favor de indicar la opcion que desea: " << endl;
+    cout << "Bienvenido al menu del consultorio HappyDental, favor de indicar la opcion que desea: " << endl;
     cout << "1. Agendar cita " << endl;
     cout << "2. Modificar cita " << endl;
     cout << "3. Eliminar cita " << endl;
